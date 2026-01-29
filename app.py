@@ -11,8 +11,8 @@ from routes.users import router as user_router
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="FastAPI Auth Template",
-    description="Production-ready authentication system",
+    title="Sterling Catering API",
+    description="Premium catering booking system with dynamic fee management",
     version="1.0.0"
 )
 
@@ -28,9 +28,10 @@ app.add_middleware(
 # Register routes
 app.include_router(user_router, prefix="/users", tags=["Users"])
 
+
 @app.get("/")
 def home():
-    return {"message": "FastAPI Auth Template - Ready to use!"}
+    return {"message": "Sterling Catering API"}
 
 if __name__ == "__main__":
     import uvicorn
