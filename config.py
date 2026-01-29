@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Settings:
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./catering.db")
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./sterling.db")
     SECRET_KEY: str = os.getenv("SECRET_KEY", "dev-secret-key-change-in-production")
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRATION_MINUTES: int = 60 * 24

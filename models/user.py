@@ -1,8 +1,11 @@
+from __future__ import annotations
+
 from sqlalchemy import String, Integer, Boolean, DateTime
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime, timezone
 import bcrypt
 from database import Base
+
 
 class User(Base):
     __tablename__ = "users"
@@ -25,6 +28,9 @@ class User(Base):
         onupdate=lambda: datetime.now(timezone.utc),
         nullable=False
     )
+
+    # models/user.py
+    members: Mapped[list["Member"]] = relationship("Member", back_populates="user", cascade="all, delete-orphan")  # type: ignore
 
     def set_password(self, password: str) -> None:
         """Hashes the password using bcrypt."""
